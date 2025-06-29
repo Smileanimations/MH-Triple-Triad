@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://v4nferm31yqc"]
+
+[ext_resource type="Script" uid="uid://uqijd5x2e27a" path="res://Deck/Deck.gd" id="1_wcrf1"]
+
+[node name="Deck" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_wcrf1")
+
+[node name="VBoxContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 659.0
