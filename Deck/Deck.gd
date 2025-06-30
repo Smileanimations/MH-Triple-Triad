@@ -4,9 +4,9 @@ extends  Control
 @onready var container = $VBoxContainer
 
 func _ready():
+	var horizontalPosition = 0
 	for i in 4:
 		var instance = card.instantiate()
-		instance.custom_minimum_size = Vector2(60, 90)
-		instance.size = Vector2(40, 20)
+		instance.position = Vector2(horizontalPosition, 0)
 		container.add_child(instance)
-		
+		horizontalPosition += 75

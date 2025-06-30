@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://ev3cat4r7344"]
+
+[ext_resource type="Texture2D" uid="uid://cq8hmiqwkl3lw" path="res://Sprites and what not/grid.png" id="1_dd0lm"]
+[ext_resource type="Script" uid="uid://ck3okgb31uiki" path="res://Board/Panel.gd" id="2_kyoeb"]
+[ext_resource type="PackedScene" uid="uid://v4nferm31yqc" path="res://Deck/Deck.tscn" id="3_2682w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0lm"]
+
+[node name="Board" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 36.0
+offset_right = 286.0
+offset_bottom = 612.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -35.0
+offset_right = 1440.0
+offset_bottom = 1259.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_dd0lm")
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = -70.0
+offset_right = 1440.0
+offset_bottom = 1222.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dd0lm")
+script = ExtResource("2_kyoeb")
+
+[node name="Deck" parent="." instance=ExtResource("3_2682w")]
+layout_mode = 0
+offset_left = 721.0
+offset_top = -35.0
+offset_right = 1145.0
+offset_bottom = 608.0

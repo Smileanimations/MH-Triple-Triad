@@ -11,5 +11,5 @@ script = ExtResource("1_wcrf1")
 
 [node name="VBoxContainer" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 659.0
+offset_right = 631.0
+offset_bottom = 652.0

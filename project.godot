@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Triple Monster Triad"
-run/main_scene="uid://v4nferm31yqc"
+run/main_scene="uid://ev3cat4r7344"
 config/features=PackedStringArray("4.4")
 
 [gui]
