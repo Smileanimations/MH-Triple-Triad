@@ -4,8 +4,12 @@ extends Control
 var values = {
 	"Rathalos": [4, 2, 3, 2],
 	"Rathian": [3, 2, 4, 2],
-	"Nargacuga": [1, 3, 2, 3],
-	"Tigrex": [4, 2, 1, 2]
+	"Nargacuga": [2, 4, 2, 4],
+	"Tigrex": [5, 3, 1, 3],
+	"Brachydios": [4, 5, 1, 5],
+	"Lagiacrus": [3, 2, 4, 2],
+	"Seregios": [3, 3, 2, 3],
+	"Zinogre": [2, 3, 3, 3]
 }
 
 @onready var directions = {

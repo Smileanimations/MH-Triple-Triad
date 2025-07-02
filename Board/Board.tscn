@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://ck3okgb31uiki" path="res://Board/Panel.gd" id="2_kyoeb"]
 [ext_resource type="PackedScene" uid="uid://v4nferm31yqc" path="res://Deck/Deck.tscn" id="3_2682w"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0lm"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2682w"]
+texture = ExtResource("1_dd0lm")
 
 [node name="Board" type="Control"]
 layout_mode = 3
@@ -18,22 +19,16 @@ offset_bottom = 612.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_top = -35.0
-offset_right = 1440.0
-offset_bottom = 1259.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_dd0lm")
-
-[node name="Panel" type="Panel" parent="TextureRect"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_top = -70.0
-offset_right = 1440.0
-offset_bottom = 1222.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_dd0lm")
+offset_top = -36.0
+offset_right = 709.0
+offset_bottom = 612.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2682w")
 script = ExtResource("2_kyoeb")
+
+[node name="Highlight" type="Panel" parent="Panel"]
+layout_mode = 0
 
 [node name="Deck" parent="." instance=ExtResource("3_2682w")]
 layout_mode = 0

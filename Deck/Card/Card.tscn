@@ -60,8 +60,12 @@ scale = Vector2(2.5, 2.5)
 text = "4"
 uppercase = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel"]
-position = Vector2(157, 195)
+[node name="Sprite2D" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 72.0
+offset_right = 540.0
+offset_bottom = 572.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2")
 
