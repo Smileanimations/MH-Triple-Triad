@@ -1,5 +1,7 @@
 extends Panel
 
+@onready var instance = load("res://Deck/Deck.tscn")
+
 var cardPositions = [
 	[null, null, null],
 	[null, null, null],
@@ -38,6 +40,32 @@ func isOnBoard():
 #Will snap the card to a set position on the square.
 func snapCard(card):
 	cardPositions[selected.y][selected.x] = card
-	print(cardPositions)
 	card.global_position = (selected * size / boardSize) + Vector2(33, 3)
 	highlight.visible = false
+	cardPlayed()
+
+func cardPlayed():
+	var selectedCard = cardPositions[selected.y][selected.x]
+	
+	var directions = [
+		Vector2(0, -1),
+		Vector2(1, 0),
+		Vector2(0, 1),
+		Vector2(-1, 0)
+	]
+	var opposite = [
+		2,
+		3,
+		0,
+		1,
+	]
+	var value = 0
+	for direction in directions:
+		var adjacentPosition = selected + direction
+		
+		if adjacentPosition.y <= 2 and adjacentPosition.y >= 0 and adjacentPosition.x <= 2 and adjacentPosition.x >= 0:
+			if cardPositions[adjacentPosition.y][adjacentPosition.x] != null:
+				var adjacentCard = cardPositions[adjacentPosition.y][adjacentPosition.x]
+				if selectedCard.values[selectedCard.monster][value] > adjacentCard.values[adjacentCard.monster][opposite[value]]:
+					adjacentCard.nodes["Panel"].self_modulate = selectedCard.nodes["Panel"].self_modulate 
+		value += 1

@@ -7,6 +7,12 @@ var values = {
 	"Nargacuga": [2, 4, 2, 4],
 	"Tigrex": [5, 3, 1, 3],
 	"Brachydios": [4, 5, 1, 5],
+	"Lagiacrus": [4, 2, 4, 2],
+	"Seregios": [4, 4, 3, 4],
+	"Glavenus": [4, 2, 5, 2],
+	"Yian Kut-Ku": [3, 2 ,1, 2],
+	"Great Jagras": [2, 1, 1, 1],
+	"Paolumu": [3, 2, 3, 2]
 }
 
 @onready var directions = {
@@ -22,13 +28,15 @@ var values = {
 	"Panel": $Panel
 }
 
+var monster = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pullCard(values)
 
 # Function that pulls a card with random value
 func pullCard(values):
-	var monster = values.keys().pick_random()
+	monster = values.keys().pick_random()
 	print(monster)
 	var x = 0
 	for i in values[monster]:
@@ -36,6 +44,5 @@ func pullCard(values):
 		directions[direction[x]].text = "%s" % i
 		x += 1
 	nodes["Panel"].self_modulate = Color(randf(), randf(), randf() )
-	print(nodes["Panel"].self_modulate)
 	nodes["Name"].text = monster
 	nodes["Icon"].texture = load("res://Sprites and what not/Icons/%s.png" % monster)

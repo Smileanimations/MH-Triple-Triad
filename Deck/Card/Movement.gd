@@ -35,5 +35,5 @@ func _gui_input(event: InputEvent) -> void:
 				mouse_filter = Control.MOUSE_FILTER_IGNORE
 			else:
 				card.position = startPosition
-				card.get_parent().move_child(card, startTreePosition)
+			card.get_parent().move_child(card, startTreePosition)
 			
