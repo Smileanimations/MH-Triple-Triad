@@ -5,11 +5,4 @@
 [node name="Deck" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 8.0
-offset_bottom = 8.0
 script = ExtResource("1_wcrf1")
-
-[node name="VBoxContainer" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 631.0
-offset_bottom = 652.0

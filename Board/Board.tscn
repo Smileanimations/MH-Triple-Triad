@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ev3cat4r7344"]
+[gd_scene load_steps=6 format=3 uid="uid://ev3cat4r7344"]
 
 [ext_resource type="Texture2D" uid="uid://cq8hmiqwkl3lw" path="res://Sprites and what not/grid.png" id="1_dd0lm"]
+[ext_resource type="Script" uid="uid://q48grmxtroaq" path="res://Board/board.gd" id="1_wd5v0"]
 [ext_resource type="Script" uid="uid://ck3okgb31uiki" path="res://Board/Panel.gd" id="2_kyoeb"]
 [ext_resource type="PackedScene" uid="uid://v4nferm31yqc" path="res://Deck/Deck.tscn" id="3_2682w"]
 
@@ -18,8 +19,9 @@ offset_right = 286.0
 offset_bottom = 612.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wd5v0")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Grid" type="Panel" parent="."]
 layout_mode = 0
 offset_top = -36.0
 offset_right = 709.0
@@ -27,12 +29,34 @@ offset_bottom = 612.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2682w")
 script = ExtResource("2_kyoeb")
 
-[node name="Highlight" type="Panel" parent="Panel"]
+[node name="Highlight" type="Panel" parent="Grid"]
 layout_mode = 0
 
 [node name="Deck" parent="." instance=ExtResource("3_2682w")]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -715.0
+offset_top = -29.0
+offset_right = -287.0
+offset_bottom = 559.0
+grow_horizontal = 0
+isPlayer = true
+
+[node name="EnemyDeck" parent="." instance=ExtResource("3_2682w")]
+offset_left = 725.0
+offset_top = 250.0
+offset_right = 1153.0
+offset_bottom = 838.0
+
+[node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 721.0
-offset_top = -35.0
-offset_right = 1145.0
-offset_bottom = 608.0
+offset_left = 893.0
+offset_top = 561.0
+offset_right = 1154.0
+offset_bottom = 612.0
+text = "Reset Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="Triple Monster Triad"
-run/main_scene="uid://ev3cat4r7344"
+run/main_scene="uid://b3ds88d7ex3u5"
 config/features=PackedStringArray("4.4")
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+fonts/size/viewport_height=648
+fonts/size/viewport_width=1152
+fonts/stretch/scale=1.0
 
 [physics]
 

@@ -1,12 +1,19 @@
 extends  Control
 
 @onready var card = preload("res://Deck/Card/Card.tscn")
-@onready var container = $VBoxContainer
+@onready var container = $"."
+@export var isPlayer: bool
 
-func _ready():
+#Sets the position of the cards, creates a new row every 5 cards
+func createCards(player):
 	var horizontalPosition = 0
-	for i in 4:
-		var instance = card.instantiate()
-		instance.position = Vector2(horizontalPosition, 0)
-		container.add_child(instance)
+	var verticalPosition = -100
+	for i in 10:
+		var cardInstance = card.instantiate()
+		if i % 5 == 0:
+			verticalPosition += 100
+			horizontalPosition = 0
+		cardInstance.position = Vector2(horizontalPosition, verticalPosition)
+		cardInstance.cardSettings(player)
+		container.add_child(cardInstance)
 		horizontalPosition += 75
