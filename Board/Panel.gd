@@ -1,6 +1,8 @@
 extends Panel
 
 @onready var instance = load("res://Deck/Deck.tscn")
+@onready var board = get_parent()
+@onready var highlight = $Highlight
 
 var cardPositions = [
 	[null, null, null],
@@ -12,9 +14,9 @@ var boardSize = Vector2(3, 3)
 var selected = Vector2(0, 0)
 var hover = false
 
-@onready var highlight = $Highlight
 
 func _ready() -> void:
+	highlight.z_index = -2
 	highlight.visible = false
 	highlight.size = size / boardSize
 	highlight.position = Vector2(0, 0)
@@ -38,13 +40,16 @@ func isOnBoard():
 	return false
 
 #Will snap the card to a set position on the square.
-func snapCard(card):
+func snapCard(card, player):
+	print(player)
+	card.z_index = -1
 	cardPositions[selected.y][selected.x] = card
 	card.global_position = (selected * size / boardSize) + Vector2(33, 3)
 	highlight.visible = false
-	cardPlayed()
+	cardPlayed(player)
 
-func cardPlayed():
+#Checks every adjacent direction for a card, if there is a card it will compare values with said card
+func cardPlayed(player):
 	var selectedCard = cardPositions[selected.y][selected.x]
 	
 	var directions = [
@@ -60,6 +65,7 @@ func cardPlayed():
 		1,
 	]
 	var value = 0
+	
 	for direction in directions:
 		var adjacentPosition = selected + direction
 		
@@ -67,5 +73,8 @@ func cardPlayed():
 			if cardPositions[adjacentPosition.y][adjacentPosition.x] != null:
 				var adjacentCard = cardPositions[adjacentPosition.y][adjacentPosition.x]
 				if selectedCard.values[selectedCard.monster][value] > adjacentCard.values[adjacentCard.monster][opposite[value]]:
-					adjacentCard.nodes["Panel"].self_modulate = selectedCard.nodes["Panel"].self_modulate 
+					adjacentCard.nodes["Panel"].self_modulate = selectedCard.nodes["Panel"].self_modulate
+					# Add one to the player who captured the card
+					# Also make sure players cant capture their own card+
 		value += 1
+	board.nextTurn(player)

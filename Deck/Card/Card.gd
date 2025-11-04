@@ -25,14 +25,22 @@ var values = {
 @onready var nodes = {
 	"Name": $Panel/Name,
 	"Icon": $Panel/Sprite2D,
-	"Panel": $Panel
+	"Panel": $Panel,
+	"Movement": $Movement
 }
+var monster = null
+var cardColor = [Color(0, 0.25, 1), Color(1,0.2,0)]
+var cardOwner = 0
 
 var monster = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pullCard(values)
+
+func cardSettings(player):
+	cardOwner = player
+	
 
 # Function that pulls a card with random value
 func pullCard(values):
@@ -43,6 +51,6 @@ func pullCard(values):
 		var direction = directions.keys()
 		directions[direction[x]].text = "%s" % i
 		x += 1
-	nodes["Panel"].self_modulate = Color(randf(), randf(), randf() )
+	nodes["Panel"].self_modulate = cardColor[cardOwner]
 	nodes["Name"].text = monster
 	nodes["Icon"].texture = load("res://Sprites and what not/Icons/%s.png" % monster)

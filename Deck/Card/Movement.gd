@@ -26,12 +26,13 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			heldDown = true
+			z_index = 2
 			heldOffset = card.position - get_global_mouse_position()
 			card.get_parent().move_child(card, -1)
 		elif event.button_index == 1 and not event.pressed:
 			heldDown = false
 			if grid.isOnBoard() == true:
-				grid.snapCard(card)
+				grid.snapCard(card, card.cardOwner)
 				mouse_filter = Control.MOUSE_FILTER_IGNORE
 			else:
 				card.position = startPosition

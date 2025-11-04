@@ -77,7 +77,7 @@ offset_bottom = 421.0
 text = "Rathalos"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="Movement" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 167.0
 offset_bottom = 212.0
