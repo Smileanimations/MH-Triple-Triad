@@ -72,9 +72,13 @@ func cardPlayed(player):
 		if adjacentPosition.y <= 2 and adjacentPosition.y >= 0 and adjacentPosition.x <= 2 and adjacentPosition.x >= 0:
 			if cardPositions[adjacentPosition.y][adjacentPosition.x] != null:
 				var adjacentCard = cardPositions[adjacentPosition.y][adjacentPosition.x]
-				if selectedCard.values[selectedCard.monster][value] > adjacentCard.values[adjacentCard.monster][opposite[value]]:
-					adjacentCard.nodes["Panel"].self_modulate = selectedCard.nodes["Panel"].self_modulate
-					# Add one to the player who captured the card
-					# Also make sure players cant capture their own card+
+				print("Player: %s\n Adjacent Player: %s" % [player, adjacentCard.cardOwner])
+				if player != adjacentCard.cardOwner:
+					if selectedCard.values[selectedCard.monster][value] > adjacentCard.values[adjacentCard.monster][opposite[value]]:
+						board.players[player]["score"] += 1
+						board.players[adjacentCard.cardOwner]["score"] -= 1
+						adjacentCard.nodes["Panel"].self_modulate = selectedCard.nodes["Panel"].self_modulate
+						adjacentCard.cardOwner = player
 		value += 1
+	print(board.players)
 	board.nextTurn(player)

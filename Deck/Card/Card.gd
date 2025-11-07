@@ -32,8 +32,6 @@ var monster = null
 var cardColor = [Color(0, 0.25, 1), Color(1,0.2,0)]
 var cardOwner = 0
 
-var monster = null
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pullCard(values)

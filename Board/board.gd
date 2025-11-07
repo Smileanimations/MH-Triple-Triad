@@ -2,8 +2,8 @@ extends Control
 
 @onready var grid = $Grid
 @onready var players = [
-	{"score": 0, "deck": $Deck},
-	{"score": 0, "deck": $EnemyDeck}
+	{"score": 0, "deck": $Player/Deck},
+	{"score": 0, "deck": $EnemyPlayer/Deck}
 ]
 
 func _ready():
@@ -16,14 +16,20 @@ func _on_button_pressed() -> void:
 		[null, null, null],
 		[null, null, null],
 	]
+	
 	createDecks()
 
 func createDecks():
 	for i in 2:
+		players[i].score = 0
 		var cards = players[i].deck.get_children()
 		for card in cards:
 			card.queue_free()
+			players[i].deck.remove_child(card)
+		print(players[i].deck.name)
 		players[i].deck.createCards(i)
+		players[i].score = players[i].deck.get_child_count()
+		print(players[i].deck.get_children())
 
 func nextTurn(player):
 	changeCardVisibility(player, false)

@@ -8,7 +8,7 @@ extends  Control
 func createCards(player):
 	var horizontalPosition = 0
 	var verticalPosition = -100
-	for i in 10:
+	for i in 5:
 		var cardInstance = card.instantiate()
 		if i % 5 == 0:
 			verticalPosition += 100
